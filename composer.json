@@ -1,0 +1,31 @@
+{
+	"name": "admin/kashpluh",
+	"require": {
+		"illuminate/collections": "^13.9"
+	},
+	"autoload": {
+		"psr-4": {}
+	},
+	"autoload-dev": {
+		"psr-4": {
+			"Tests\\": "tests/",
+			"Core\\": "Core/",
+			"Http\\": "Http/",
+			"Services\\": "Services/"
+		}
+	},
+	"require-dev": {
+		"pestphp/pest": "^4.7"
+	},
+	"authors": [
+		{
+			"name": "Dreikopia",
+			"email": "andreiheatherquintos@gmail.com"
+		}
+	],
+	"config": {
+		"allow-plugins": {
+			"pestphp/pest-plugin": true
+		}
+	}
+}
