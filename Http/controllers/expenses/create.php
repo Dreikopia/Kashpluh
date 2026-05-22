@@ -1,14 +1,10 @@
 <?php
 
-use Core\App;
-use Core\Database;
 use Core\Session;
+use Services\CategoryRepository;
 
-$db = App::resolve(Database::class);
 
-$query = "SELECT * FROM categories";
-
-$categories = $db->query($query)->findAll();
+$categories = (new CategoryRepository)->all();
 
 view('expenses/create.view.php', [
     'errors' => Session::get('errors'),
