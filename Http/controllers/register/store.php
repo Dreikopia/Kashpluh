@@ -3,6 +3,7 @@
 use Core\App;
 use Core\Database;
 use Core\Validator;
+use Core\Authenticator;
 
 $db = App::resolve(Database::class);
 
@@ -29,20 +30,23 @@ if (! empty($errors)) {
     ]);
     exit();
 } else {
-    $query = "INSERT INTO users(username, email, pwd)
-    VALUES(:username, :email, :pwd)";
 
 
-    $db->query($query, [
-        ':username' => $username,
-        ':email' => $email,
-        ':pwd' => password_hash($password, PASSWORD_BCRYPT)
-    ]);
+    (new Authenticator)->attemptToRegister($username, $email, $password);
+    // $query = "INSERT INTO users(username, email, pwd)
+    // VALUES(:username, :email, :pwd)";
 
-    login([
-        'username' => $username,
-        'email' => $email,
-    ]);
+
+    // $db->query($query, [
+    //     ':username' => $username,
+    //     ':email' => $email,
+    //     ':pwd' => password_hash($password, PASSWORD_BCRYPT)
+    // ]);
+
+    // login([
+    //     'username' => $username,
+    //     'email' => $email
+    // ]);
 
     redirect('/');
 }
