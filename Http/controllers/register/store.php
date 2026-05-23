@@ -3,13 +3,11 @@
 use Core\App;
 use Core\Database;
 use Core\Authenticator;
-use Core\Session;
-use Core\ValidationException;
-use Http\Forms\RegisterForm;
+use Http\Forms\RegistrationForm;
 
 $db = App::resolve(Database::class);
 
-$form = RegisterForm::validate($attributes = [
+RegistrationForm::validate($attributes = [
     'username' => $_POST['username'],
     'email' => $_POST['email'],
     'password' => $_POST['password']

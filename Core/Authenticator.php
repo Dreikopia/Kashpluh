@@ -26,6 +26,7 @@ class Authenticator
             'username' => $username,
             'email' => $email
         ]);
+        return true;
     }
 
     public function attemptToLogin($login, $password)
